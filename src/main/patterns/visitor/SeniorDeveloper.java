@@ -1,5 +1,6 @@
 package patterns.visitor;
 
+
 public class SeniorDeveloper implements Developer {
     @Override
     public void create(ProjectClass projectClass) {
