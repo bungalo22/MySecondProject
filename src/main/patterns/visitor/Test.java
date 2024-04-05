@@ -1,6 +1,7 @@
 package patterns.visitor;
 
-public class Database implements ProjectElement{
+public class Test implements ProjectElement{
+
     @Override
     public void beWritten(Developer developer) {
 
