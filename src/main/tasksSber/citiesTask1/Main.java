@@ -1,24 +1,29 @@
 package citiesTask1;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<City> cities = new ArrayList<>();
-        try (InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("Tasks.csv");
-             Scanner scanner = new Scanner(inputStream)) {
+        try {
+            InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("Tasks.csv");
+            Scanner scanner = new Scanner(inputStream);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] fields = line.split(",");
                 cities.add(new City(fields[1], fields[2], fields[3], Integer.parseInt(fields[4]), fields[5]));
             }
-        } catch (IOException e) {
+            scanner.close();
+            inputStream.close();
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        for (City city : cities) {
-            System.out.println(city);
+        for (City city1 : cities) {
+            System.out.println(city1);
         }
     }
 
@@ -41,10 +46,10 @@ public class Main {
         public String toString() {
             return "City{" +
                     "name='" + this.name + '\'' +
-                    ", region='" + this.region + '\'' +
-                    ", district='" + this.district + '\'' +
-                    ", population=" + this.population +
-                    ", foundation='" + this.foundation + '\'' +
+                    ",region='" + this.region + '\'' +
+                    ",district='" + this.district + '\'' +
+                    ",population=" + this.population +
+                    ",foundation='" + this.foundation + '\'' +
                     '}';
         }
     }
