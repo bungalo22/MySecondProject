@@ -1,5 +1,7 @@
 package patterns.visitor;
 
+import arrayList.Test;
+import patterns.adapter.Database;
 
 public class SeniorDeveloper implements Developer {
     @Override
